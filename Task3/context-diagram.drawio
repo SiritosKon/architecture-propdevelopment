@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="ctx" name="Диаграмма контекста">
+    <mxGraphModel dx="2150" dy="691" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="620" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="owner" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#08427B;fontColor=#ffffff;strokeColor=#052E56;fontSize=12;verticalAlign=middle;align=center;" value="Собственник  [Person] Управляет доступом, открывает дверь и шлагбаум, смотрит события" vertex="1">
+          <mxGeometry height="120" width="190" x="-5" y="38" as="geometry" />
+        </mxCell>
+        <mxCell id="guest" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#08427B;fontColor=#ffffff;strokeColor=#052E56;fontSize=12;verticalAlign=middle;align=center;" value="Посетитель / гость  [Person] Звонит в домофон, подъезжает к шлагбауму" vertex="1">
+          <mxGeometry height="110" width="190" x="40" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prop" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;fontColor=#ffffff;strokeColor=#0B4884;fontSize=12;verticalAlign=middle;align=center;" value="PropDevelopment  [Программная система] Мобильное приложение собственника и сервисы ЖКУ. Предоставляет функции «Умного дома»" vertex="1">
+          <mxGeometry height="150" width="280" x="380" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="partner" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8C8C;fontColor=#ffffff;strokeColor=#5F5F5F;fontSize=12;verticalAlign=middle;align=center;" value="Партнёрская платформа «Умный дом»  [Внешняя система] Распознавание лиц и автономеров, управление устройствами, списки доступа" vertex="1">
+          <mxGeometry height="150" width="280" x="820" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="uk" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8C8C;fontColor=#ffffff;strokeColor=#5F5F5F;fontSize=12;verticalAlign=middle;align=center;" value="Управляющая компания  [Внешний оператор] Ведёт и согласует списки доступа жильцов" vertex="1">
+          <mxGeometry height="110" width="280" x="380" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="w5YOSEAFgj8KDNGrX_o4-1" edge="1" parent="1" source="domofon" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="barrier" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="domofon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B0642F;fontColor=#ffffff;strokeColor=#7A4420;fontSize=11;verticalAlign=middle;align=center;" value="Интеллектуальный домофон  [Устройство] Видеозвонок, биометрия по лицу" vertex="1">
+          <mxGeometry height="80" width="280" x="820" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="barrier" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B0642F;fontColor=#ffffff;strokeColor=#7A4420;fontSize=11;verticalAlign=middle;align=center;" value="Интеллектуальный шлагбаум  [Устройство] Распознавание автомобильных номеров" vertex="1">
+          <mxGeometry height="80" width="280" x="820" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="owner" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;" target="prop" value="Управляет умным домом [Мобильное приложение, HTTPS]">
+          <mxGeometry relative="1" x="-0.2176" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="79" y="225" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="uk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;" target="prop" value="Передаёт списки доступа жильцов">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="prop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;" target="partner" value="Команды и синхронизация списков [REST/HTTPS, mTLS + OAuth2]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="520" y="81" />
+              <mxPoint x="960" y="81" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="partner" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;" target="prop" value="События распознавания и открытия [Webhook, подпись HMAC]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="960" y="28" />
+              <mxPoint x="520" y="28" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="partner" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;" target="domofon" value="Управляет, получает биометрию">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="partner" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;" target="barrier" value="Управляет, распознаёт номер">
+          <mxGeometry relative="1" x="-0.2021" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1133" y="225" />
+              <mxPoint x="1133" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="guest" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="domofon" value="Звонит, показывает лицо">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="135" y="566" />
+              <mxPoint x="736" y="566" />
+              <mxPoint x="736" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="guest" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#404040;endArrow=block;endFill=1;fontSize=10;fontColor=#1a1a1a;labelBackgroundColor=#ffffff;spacingTop=0;" target="barrier" value="Подъезжает на автомобиле">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="135" y="516" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
